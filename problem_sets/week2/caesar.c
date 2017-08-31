@@ -13,13 +13,16 @@ int main(int argc, char *argv[])
     char s[256];
     char encrypted[256];
 
-    printf("plaintext: ");
+    printf("plaintext:  ");
     scanf("%[^\n]", s);
 
     for (int i = 0; i < strlen(s); ++i)
     {
         char letter = s[i];
-        encrypted[i] = letter + key;
+        encrypted[i] = letter;
+        if ((letter <= 'z' && letter >= 'a') || (letter <= 'Z' && letter >= 'A')) {
+            encrypted[i] += key;
+        }
         if ((letter + key > 'z' && letter <= 'z' && letter >= 'a') || (letter + key > 'Z' && letter <= 'Z' && letter >= 'A'))
         {
             encrypted[i] -= 26;
